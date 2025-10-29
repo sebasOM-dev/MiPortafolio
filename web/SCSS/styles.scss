@@ -1,0 +1,296 @@
+@use "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url("../../node_modules/bootstrap-icons/font/bootstrap-icons.css");
+
+
+/**/
+
+// $primario-dark:#2a2a2a;
+// $secundario-dark:#2c2c2c;
+
+// $primario-light:#FFF;
+// $secundario-light:#d6d6d6;
+// $dark-mode:false;
+
+@keyframes girar {
+    from{
+        transform: rotate(0deg);
+    }
+
+    to{
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes regresar {
+    from{
+        transform: rotate(180deg);
+    }
+
+    to{
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes aparecer-primer-boton {
+    from{
+        transform: translate(0px, 0px);
+    }
+
+    to{
+        transform: translate(68px,68px);
+    }
+}
+
+@keyframes desaparecer-primer-boton {
+    from{
+        transform: translate(68px,68px);
+    }
+
+    to{
+        transform: translate(0px,0px);
+    }
+}
+
+@keyframes aparecer-segundo-boton {
+    from{
+        transform: translate(0px, 0px);
+    }
+
+    to{
+        transform: translate(80px,0px);
+    }
+}
+
+@keyframes desaparecer-segundo-boton {
+    from{
+        transform: translate(80px,0px);
+    }
+
+    to{
+        transform: translate(0px,0px);
+    }
+}
+
+@keyframes desplazar-preguntas-arriba{
+    from{
+        transform: translate(0,50dvh);
+    }
+
+    to{
+        transform: translate(0px,0dvh);
+    }
+}
+
+@keyframes desplazar-preguntas-abajo{
+    from{
+        transform: translate(0,-72dvh);
+    }
+
+    to{
+        transform: translate(0,0dvh);
+    }
+}
+
+
+.margin-msg{
+    margin-bottom: 11rem;
+}
+
+:root{
+    --color-primario:#2a2a2a;
+    --color-secundario:#2c2c2c;
+    --color-texto:white;
+}
+
+
+body{
+    background-color: var(--color-primario);
+    color: var(--color-texto);
+
+    .texto-chat{
+        text-align: start;
+        width:12rem; 
+        word-wrap: break-word; 
+        white-space: normal;
+        font-weight:600;
+    }
+
+    .button-opciones{
+        background-color: var(--color-secundario);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border: solid 1px var(--color-secundario);
+        border-radius: 20rem;
+    }
+
+    [name="bar-chat"]{
+        background-color: var(--color-secundario);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border: solid 1px var(--color-secundario);
+        border-radius: 20rem;
+        padding: .6rem;
+        margin-bottom: 1rem;
+    }
+
+    [name="pregunta"]{
+        background-color: var(--color-secundario);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border: solid 1px var(--color-secundario);
+        border-radius: 20rem;
+        padding-left: .6rem;
+        padding-right: .6rem;
+
+        font-size: 0.6rem;
+
+        margin-bottom: 1rem;
+    }
+
+    [id="preguntas"]{
+        position: absolute;
+        top: 50dvh;
+        z-index: -4;
+    }
+
+
+    .preguntas-aparecer-animation{
+        animation: desplazar-preguntas-arriba .6s ease-in-out;
+        top: -22dvh;
+    }
+
+    .preguntas-desaparecer-animation{
+        animation: desplazar-preguntas-abajo .6s ease-in-out;
+        top: 50dvh;
+    }
+
+    .button-abrir-animation{
+        animation: girar .2s ease-in-out;
+        transform: rotate(180deg);
+    }
+
+    .button-cerrar-animation{
+        animation: regresar .2s ease-in-out;
+        transform: rotate(0deg);
+    }
+
+    .boton-principal{
+        width: 4rem;
+        height: 4rem;
+        z-index: 3;
+    }
+
+    [name="opciones"]{
+        z-index: 1;
+        width: 3rem;
+        height: 3rem;
+        margin-left: 2rem;
+        margin-top: 2rem;
+    }
+
+
+
+    .primer-boton-aparecer{
+        animation: aparecer-primer-boton .3s ease-in-out;
+        transform: translate(68px,68px);
+    }
+
+    .primer-boton-desaparecer{
+        animation: desaparecer-primer-boton .3s ease-in-out;
+        transform: translate(0px,0px);
+    }
+
+    .segundo-boton-aparecer{
+        animation: aparecer-segundo-boton .3s ease-in-out;
+        transform: translate(80px,0px);
+    }
+
+    .segundo-boton-desaparecer{
+        animation: desaparecer-segundo-boton .3s ease-in-out;
+        transform: translate(0px,0px);
+    }
+
+}
+
+
+@media (min-width: 415px) and (max-width: 1366px) {
+    @keyframes desplazar-preguntas-arriba{
+        from{
+            transform: translate(0,50dvh);
+        }
+    
+        to{
+            transform: translate(0px,0dvh);
+        }
+    }
+    
+    @keyframes desplazar-preguntas-abajo{
+        from{
+            transform: translate(0,-65dvh);
+        }
+    
+        to{
+            transform: translate(0,0dvh);
+        }
+    }
+
+    body {
+        .preguntas-aparecer-animation{
+            animation: desplazar-preguntas-arriba .6s ease-in-out;
+            top: -15dvh;
+        }
+    
+        .preguntas-desaparecer-animation{
+            animation: desplazar-preguntas-abajo .6s ease-in-out;
+            top: 50dvh;
+        }
+    }
+}
+
+@media (min-width: 1367px) {
+
+    @keyframes desplazar-preguntas-arriba{
+        from{
+            transform: translate(0,50dvh);
+        }
+    
+        to{
+            transform: translate(0px,0dvh);
+        }
+    }
+    
+    @keyframes desplazar-preguntas-abajo{
+        from{
+            transform: translate(0,-56dvh);
+        }
+    
+        to{
+            transform: translate(0,0dvh);
+        }
+    }
+
+    .margin-msg{
+        margin-bottom: 3rem;
+    }
+
+    body {
+        .preguntas-aparecer-animation{
+            animation: desplazar-preguntas-arriba .6s ease-in-out;
+            top: -6dvh;
+        }
+    
+        .preguntas-desaparecer-animation{
+            animation: desplazar-preguntas-abajo .6s ease-in-out;
+            top: 50dvh;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
