@@ -1,7 +1,8 @@
 @use "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import url("../../node_modules/bootstrap-icons/font/bootstrap-icons.css");
 
-
+$speed-animation: .4s;
+$speed-animation-down: .6s;
 /**/
 
 // $primario-dark:#2a2a2a;
@@ -99,7 +100,7 @@
 :root{
     --color-primario:#2a2a2a;
     --color-secundario:#2c2c2c;
-    --color-texto:white;
+    --color-texto:#ffffff;
 }
 
 
@@ -129,6 +130,7 @@ body{
         border-radius: 20rem;
         padding: .6rem;
         margin-bottom: 1rem;
+        width: 40rem;
     }
 
     [name="pregunta"]{
@@ -151,13 +153,24 @@ body{
     }
 
 
+    // .preguntas-aparecer-animation{
+    //     animation: desplazar-preguntas-arriba .4s ease-in-out;
+    //     top: -20dvh;
+    // }
+
+    // .preguntas-desaparecer-animation{
+    //     animation: desplazar-preguntas-abajo $speed-animation-down ease-in-out;
+    //     top: 50dvh;
+    // }
+
+    
     .preguntas-aparecer-animation{
-        animation: desplazar-preguntas-arriba .6s ease-in-out;
-        top: -22dvh;
+        animation: desplazar-preguntas-arriba .3s ease-in-out;
+        top: -17dvh;
     }
 
     .preguntas-desaparecer-animation{
-        animation: desplazar-preguntas-abajo .6s ease-in-out;
+        animation: desplazar-preguntas-abajo $speed-animation-down ease-in-out;
         top: 50dvh;
     }
 
@@ -209,7 +222,50 @@ body{
 
 }
 
+//MEDIAQUERY PARA AJUSTAR BARRA PREGUNTAS XS(MENOR A 576PX)
+@media (max-width: 576px) {
+    [name="bar-chat"]{
+        background-color: var(--color-secundario);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border: solid 1px var(--color-secundario);
+        border-radius: 20rem;
+        padding: .6rem;
+        margin-bottom: 1rem;
+        width: 80%!important;
+    }
 
+    body {
+        .preguntas-aparecer-animation{
+            animation: desplazar-preguntas-arriba .3s ease-in-out;
+            top: -12dvh;
+        }
+    
+        .preguntas-desaparecer-animation{
+            animation: desplazar-preguntas-abajo $speed-animation-down ease-in-out;
+            top: 60dvh;
+        }
+    }
+}
+
+//MEDIAQUERY PARA AJUSTAR BARRA PREGUNTAS XS(MENOR A 576PX)
+@media (max-width: 323px) {
+    body {
+        .preguntas-aparecer-animation{
+            animation: desplazar-preguntas-arriba $speed-animation ease-in-out;
+            top: -17dvh;
+        }
+    
+        .preguntas-desaparecer-animation{
+            animation: desplazar-preguntas-abajo $speed-animation-down ease-in-out;
+            top: 55dvh;
+        }
+    }
+}
+
+
+
+
+// TABLET
 @media (min-width: 415px) and (max-width: 1366px) {
     @keyframes desplazar-preguntas-arriba{
         from{
@@ -223,7 +279,7 @@ body{
     
     @keyframes desplazar-preguntas-abajo{
         from{
-            transform: translate(0,-65dvh);
+            transform: translate(0,-60dvh);
         }
     
         to{
@@ -233,17 +289,19 @@ body{
 
     body {
         .preguntas-aparecer-animation{
-            animation: desplazar-preguntas-arriba .6s ease-in-out;
-            top: -15dvh;
+            animation: desplazar-preguntas-arriba $speed-animation ease-in-out;
+            top: -10dvh;
         }
     
         .preguntas-desaparecer-animation{
-            animation: desplazar-preguntas-abajo .6s ease-in-out;
+            animation: desplazar-preguntas-abajo $speed-animation-down ease-in-out;
             top: 50dvh;
         }
     }
+    
 }
 
+// DESKTOP
 @media (min-width: 1367px) {
 
     @keyframes desplazar-preguntas-arriba{
@@ -272,12 +330,12 @@ body{
 
     body {
         .preguntas-aparecer-animation{
-            animation: desplazar-preguntas-arriba .6s ease-in-out;
+            animation: desplazar-preguntas-arriba $speed-animation ease-in-out;
             top: -6dvh;
         }
     
         .preguntas-desaparecer-animation{
-            animation: desplazar-preguntas-abajo .6s ease-in-out;
+            animation: desplazar-preguntas-abajo $speed-animation-down ease-in-out;
             top: 50dvh;
         }
     }

@@ -2,7 +2,7 @@ let dark_color_primario = "#2a2a2a";
 let dark_color_secundario = "#2c2c2c";
 let dark_text = "white";
 
-let light_color_primario = "white";
+let light_color_primario = "#cececeff";
 let light_color_secundario = "white";
 let light_text = "black";
 

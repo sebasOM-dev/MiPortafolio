@@ -2547,6 +2547,11 @@ textarea.form-control-lg {
   padding-bottom: 0.625rem;
 }
 
+.form-floating > .form-control-plaintext:not(:-moz-placeholder), .form-floating > .form-control:not(:-moz-placeholder) {
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
+}
+
 .form-floating > .form-control-plaintext:focus, .form-floating > .form-control-plaintext:not(:placeholder-shown), .form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown) {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
@@ -2567,12 +2572,27 @@ textarea.form-control-lg {
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
 
+.form-floating > .form-control:not(:-moz-placeholder) ~ label {
+  color: rgba(var(--bs-body-color-rgb), 0.65);
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
 .form-floating > .form-control-plaintext ~ label, .form-floating > .form-control:focus ~ label, .form-floating > .form-control:not(:placeholder-shown) ~ label, .form-floating > .form-select ~ label {
   color: rgba(var(--bs-body-color-rgb), 0.65);
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
 
 .form-floating > .form-control:not(:-moz-placeholder-shown) ~ label::after {
+  position: absolute;
+  inset: 1rem 0.375rem;
+  z-index: -1;
+  height: 1.5em;
+  content: "";
+  background-color: var(--bs-body-bg);
+  border-radius: var(--bs-border-radius);
+}
+
+.form-floating > .form-control:not(:-moz-placeholder) ~ label::after {
   position: absolute;
   inset: 1rem 0.375rem;
   z-index: -1;
@@ -12079,7 +12099,7 @@ textarea.form-control-lg {
 :root {
   --color-primario:#2a2a2a;
   --color-secundario:#2c2c2c;
-  --color-texto:white;
+  --color-texto:#ffffff;
 }
 
 body {
@@ -12106,6 +12126,7 @@ body [name=bar-chat] {
   border-radius: 20rem;
   padding: 0.6rem;
   margin-bottom: 1rem;
+  width: 40rem;
 }
 body [name=pregunta] {
   background-color: var(--color-secundario);
@@ -12123,8 +12144,8 @@ body [id=preguntas] {
   z-index: -4;
 }
 body .preguntas-aparecer-animation {
-  animation: desplazar-preguntas-arriba 0.6s ease-in-out;
-  top: -22dvh;
+  animation: desplazar-preguntas-arriba 0.3s ease-in-out;
+  top: -17dvh;
 }
 body .preguntas-desaparecer-animation {
   animation: desplazar-preguntas-abajo 0.6s ease-in-out;
@@ -12167,6 +12188,35 @@ body .segundo-boton-desaparecer {
   transform: translate(0px, 0px);
 }
 
+@media (max-width: 576px) {
+  [name=bar-chat] {
+    background-color: var(--color-secundario);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: solid 1px var(--color-secundario);
+    border-radius: 20rem;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    width: 80% !important;
+  }
+  body .preguntas-aparecer-animation {
+    animation: desplazar-preguntas-arriba 0.3s ease-in-out;
+    top: -12dvh;
+  }
+  body .preguntas-desaparecer-animation {
+    animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+    top: 60dvh;
+  }
+}
+@media (max-width: 323px) {
+  body .preguntas-aparecer-animation {
+    animation: desplazar-preguntas-arriba 0.4s ease-in-out;
+    top: -17dvh;
+  }
+  body .preguntas-desaparecer-animation {
+    animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+    top: 55dvh;
+  }
+}
 @media (min-width: 415px) and (max-width: 1366px) {
   @keyframes desplazar-preguntas-arriba {
     from {
@@ -12178,15 +12228,15 @@ body .segundo-boton-desaparecer {
   }
   @keyframes desplazar-preguntas-abajo {
     from {
-      transform: translate(0, -65dvh);
+      transform: translate(0, -60dvh);
     }
     to {
       transform: translate(0, 0dvh);
     }
   }
   body .preguntas-aparecer-animation {
-    animation: desplazar-preguntas-arriba 0.6s ease-in-out;
-    top: -15dvh;
+    animation: desplazar-preguntas-arriba 0.4s ease-in-out;
+    top: -10dvh;
   }
   body .preguntas-desaparecer-animation {
     animation: desplazar-preguntas-abajo 0.6s ease-in-out;
@@ -12214,7 +12264,7 @@ body .segundo-boton-desaparecer {
     margin-bottom: 3rem;
   }
   body .preguntas-aparecer-animation {
-    animation: desplazar-preguntas-arriba 0.6s ease-in-out;
+    animation: desplazar-preguntas-arriba 0.4s ease-in-out;
     top: -6dvh;
   }
   body .preguntas-desaparecer-animation {
