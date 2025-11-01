@@ -94,7 +94,7 @@ $speed-animation-down: .6s;
 
 
 .margin-msg{
-    margin-bottom: 11rem;
+    margin-bottom: 0rem;
 }
 
 :root{
@@ -140,8 +140,9 @@ body{
         border-radius: 20rem;
         padding-left: .6rem;
         padding-right: .6rem;
-
         font-size: 0.6rem;
+
+        width: fit-content;
 
         margin-bottom: 1rem;
     }

@@ -12092,7 +12092,7 @@ textarea.form-control-lg {
   }
 }
 .margin-msg {
-  margin-bottom: 11rem;
+  margin-bottom: 0rem;
 }
 
 :root {
@@ -12135,6 +12135,8 @@ body [name=pregunta] {
   padding-left: 0.6rem;
   padding-right: 0.6rem;
   font-size: 0.6rem;
+  width: -moz-fit-content;
+  width: fit-content;
   margin-bottom: 1rem;
 }
 body [id=preguntas] {
