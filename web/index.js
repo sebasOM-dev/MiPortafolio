@@ -1,3 +1,5 @@
+
+
 let dark_color_primario = "#2a2a2a";
 let dark_color_secundario = "#2c2c2c";
 let dark_text = "white";
