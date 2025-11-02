@@ -34,6 +34,8 @@
 </head>
 
 <body>
+    
+    <!-- Copiar para primer mensaje -->
     <div class="loading">
         <canvas id="loader" width="50" height="50"></canvas>
         <h2 id="loadingText"></h2>
@@ -71,7 +73,7 @@
             ctx.stroke();
 
             // Actualiza ángulo y color
-            angle += 0.03;
+            angle += 0.1;
             hue = (hue + 2) % 360;
 
             requestAnimationFrame(draw);

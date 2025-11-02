@@ -1,8 +1,15 @@
+let canvasL;
+let ctxL;
+let textElement;
 
+let angle = 0;
+let hue = 0;
 
 let dark_color_primario = "#2a2a2a";
 let dark_color_secundario = "#2c2c2c";
 let dark_text = "white";
+let code_loading='<div class="loading"><canvas id="loader" width="50" height="50"></canvas><h2 id="loadingText"></h2></div>';
+
 
 let light_color_primario = "#cececeff";
 let light_color_secundario = "white";
@@ -31,6 +38,9 @@ let tec_dev = ["./web/srcs/aws.png","./web/srcs/docker.png", "./web/srcs/git.png
 let cargarVariables = () =>{
     msg_preguntas = document.getElementById("preguntas");
     preguntas = document.getElementById("barChat");
+
+    // const canvas = document.getElementById("loader");
+    // const ctx = canvas.getContext("2d");
     
 
     preguntas.addEventListener("click",animationPreguntas);
@@ -42,6 +52,14 @@ let cargarVariables = () =>{
     trigger_preguntas[1].addEventListener("click",addConversacionQueSabes);
     trigger_preguntas[2].addEventListener("click",addExperiencia);
     trigger_preguntas[3].addEventListener("click",addConversacionContacto);
+    cargarFuncionesLoading();
+}
+
+let cargarFuncionesLoading = ()=>{
+    canvasL = document.getElementById("loader");
+    ctxL = canvasL.getContext("2d");
+    textElement = document.getElementById("loadingText");
+
 }
 
 var addConversacionQuienEres = () =>{
@@ -52,8 +70,17 @@ var addConversacionQuienEres = () =>{
     let respuestaB = '<div class="align-self-start margin-msg" id="msg_bot"><div class="d-flex justify-content-start"><div class="d-flex flex-column align-items-start"><div class="d-flex justify-content-start gap-4"><span></span><span><b>Bot</b></span></div><div class="d-flex justify-content-start gap-2"><i class="bi bi-person-circle text-light"></i><span class="badge text-bg-success text-light texto-chat" style="width: fit-content;" name="mensaje"><div class="card mb-3" style="max-width: 400px;"><div class="card-header"><b>Juan Sebastián Osorio</b></div><div class="row g-0"><div class="col-md-4"><img src="./web/srcs/sebasCV.jpg" class="img-fluid rounded-start p-2" alt="Imagen de prueba"></div><div class="col-md-8"><div class="card-body d-flex flex-column align-items-center"><p class="card-text text-center">Desarrollador <strong>full-stack</strong>, enfocado en ser <strong>SecDevOps</strong>, aplicando seguridad en las aplicaciones web, además de haber sido candidato en el <strong>campus de Madrid 42</strong>.</p></div></div></div><div class="card-footer"><div class="d-flex gap-2"><a class="btn btn-outline-success" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=personaldesebas@gmail.com"><i class="bi bi-envelope"></i></a><a href="./web/srcs/SebastíanOsorio.pdf" target="_blank" class="btn btn-outline-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a><a href="https://www.linkedin.com/in/sebastián-osorio-518728266/" target="_blank" class="btn btn-outline-primary"><i class="bi bi-linkedin"></i></a><a href="https://github.com/SebasTechMad" target="_blank" class="btn btn-outline-dark"><i class="bi bi-github"></i></a></div></div></div></span></div></div></div></div>';
     
     chat.innerHTML += respuestaU;
-    chat.innerHTML += respuestaB;
-    chat.innerHTML += "<br><br>";
+    setTimeout(() => {
+        //chat.innerHTML += code_loading;
+    chat.innerHTML = respuestaU+respuestaB+"<br><br>";
+    }, 2000);
+    
+    chat.innerHTML += code_loading;
+    draw(canvasL, ctxL);
+    waveEffect();
+
+    // chat.innerHTML += respuestaB;
+    // chat.innerHTML += "<br><br>";
 }
 
 var addConversacionQueSabes = () =>{
@@ -144,10 +171,6 @@ let animationPreguntas = () =>{
         msg_preguntas.classList.add("preguntas-desaparecer-animation");
         preguntasAbiertas = false;
     }
-
-
-
-
 }
 
 
@@ -160,8 +183,6 @@ let cambioColores = () =>{
         document.documentElement.style.setProperty("--color-secundario",dark_color_secundario);
         document.documentElement.style.setProperty("--color-texto",dark_text);
 
-        //barra_divisora_msg[0].classList.replace("border-dark","border-light");
-
         cambioColoresIconos(t_blanco);
 
         darkMode = true;
@@ -169,8 +190,6 @@ let cambioColores = () =>{
         document.documentElement.style.setProperty("--color-primario",light_color_primario);
         document.documentElement.style.setProperty("--color-secundario",light_color_secundario);
         document.documentElement.style.setProperty("--color-texto",light_text);
-        
-        //barra_divisora_msg[0].classList.replace("border-light","border-dark");
 
         cambioColoresIconos(t_negro);
 
@@ -223,5 +242,79 @@ let cambioColoresIconos = (color) =>{
         }
     }
 }
+
+    function draw(canvas, ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const x = canvas.width / 2;
+        const y = canvas.height / 2;
+        const radius = 15;
+        const lineWidth = 3;
+
+        // Fondo tenue del círculo
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = "rgba(255,255,255,0.1)";
+        ctx.lineWidth = lineWidth;
+        ctx.stroke();
+
+        // Parte animada
+        ctx.beginPath();
+        ctx.arc(x, y, radius, angle, angle + Math.PI * 1.3);
+        ctx.strokeStyle = `rgb(255,255,255)`;
+        ctx.lineWidth = lineWidth;
+        ctx.lineCap = "round";
+        ctx.stroke();
+
+        // Actualiza ángulo y color
+        angle += 0.1;
+        hue = (hue + 2) % 360;
+
+        requestAnimationFrame(draw);
+    }
+
+    
+    // const word = "Cargando";
+    // const letters = word.split("");
+    // console.log(textElement);
+
+    // // Crear los spans por letra
+    // letters.forEach(letter => {
+    // var span = document.createElement("span");
+    // span.textContent = letter;
+    // textElement.appendChild(span);
+    // });
+    let index = 0;
+
+    function waveEffect() {
+        const spans = textElement.querySelectorAll("span");
+        
+        // resetear colores
+        spans.forEach(span => (span.classList.remove("gray")));
+        // aplicar gris a la letra actual
+        spans[index].classList.add("gray");
+
+        // avanzar al siguiente índice
+        index = (index + 1) % spans.length;
+    }
+
+    // setInterval(waveEffect, 150); // cada 100ms cambia la letra
+    // draw();  
+
+    //iniciar el efecto
+    // setInterval(waveEffect, 150); // cada 150ms cambia la letra
+    // draw();
+
+
+    //añadimos los eventos necesarios
+
+
+
+
+
+
+
+
+
 
 
