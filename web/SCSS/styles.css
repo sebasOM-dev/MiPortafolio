@@ -1,0 +1,458 @@
+@use "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+/**/
+@-webkit-keyframes girar {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+@keyframes girar {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@-webkit-keyframes regresar {
+  from {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes regresar {
+  from {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@-webkit-keyframes aparecer-primer-boton {
+  from {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+  }
+  to {
+    -webkit-transform: translate(68px, 68px);
+            transform: translate(68px, 68px);
+  }
+}
+
+@keyframes aparecer-primer-boton {
+  from {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+  }
+  to {
+    -webkit-transform: translate(68px, 68px);
+            transform: translate(68px, 68px);
+  }
+}
+
+@-webkit-keyframes desaparecer-primer-boton {
+  from {
+    -webkit-transform: translate(68px, 68px);
+            transform: translate(68px, 68px);
+  }
+  to {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+  }
+}
+
+@keyframes desaparecer-primer-boton {
+  from {
+    -webkit-transform: translate(68px, 68px);
+            transform: translate(68px, 68px);
+  }
+  to {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+  }
+}
+
+@-webkit-keyframes aparecer-segundo-boton {
+  from {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+  }
+  to {
+    -webkit-transform: translate(80px, 0px);
+            transform: translate(80px, 0px);
+  }
+}
+
+@keyframes aparecer-segundo-boton {
+  from {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+  }
+  to {
+    -webkit-transform: translate(80px, 0px);
+            transform: translate(80px, 0px);
+  }
+}
+
+@-webkit-keyframes desaparecer-segundo-boton {
+  from {
+    -webkit-transform: translate(80px, 0px);
+            transform: translate(80px, 0px);
+  }
+  to {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+  }
+}
+
+@keyframes desaparecer-segundo-boton {
+  from {
+    -webkit-transform: translate(80px, 0px);
+            transform: translate(80px, 0px);
+  }
+  to {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+  }
+}
+
+@-webkit-keyframes desplazar-preguntas-arriba {
+  from {
+    -webkit-transform: translate(0, 50dvh);
+            transform: translate(0, 50dvh);
+  }
+  to {
+    -webkit-transform: translate(0px, 0dvh);
+            transform: translate(0px, 0dvh);
+  }
+}
+
+@keyframes desplazar-preguntas-arriba {
+  from {
+    -webkit-transform: translate(0, 50dvh);
+            transform: translate(0, 50dvh);
+  }
+  to {
+    -webkit-transform: translate(0px, 0dvh);
+            transform: translate(0px, 0dvh);
+  }
+}
+
+@-webkit-keyframes desplazar-preguntas-abajo {
+  from {
+    -webkit-transform: translate(0, -72dvh);
+            transform: translate(0, -72dvh);
+  }
+  to {
+    -webkit-transform: translate(0, 0dvh);
+            transform: translate(0, 0dvh);
+  }
+}
+
+@keyframes desplazar-preguntas-abajo {
+  from {
+    -webkit-transform: translate(0, -72dvh);
+            transform: translate(0, -72dvh);
+  }
+  to {
+    -webkit-transform: translate(0, 0dvh);
+            transform: translate(0, 0dvh);
+  }
+}
+
+.gray {
+  color: #888;
+  /* gris medio */
+}
+
+.margin-msg {
+  margin-bottom: 0rem;
+}
+
+:root {
+  --color-primario:#2a2a2a;
+  --color-secundario:#2c2c2c;
+  --color-texto:#ffffff;
+}
+
+body {
+  background-color: var(--color-primario);
+  color: var(--color-texto);
+}
+
+body .texto-chat {
+  text-align: start;
+  width: 12rem;
+  word-wrap: break-word;
+  white-space: normal;
+  font-weight: 600;
+}
+
+body .button-opciones {
+  background-color: var(--color-secundario);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: solid 1px var(--color-secundario);
+  border-radius: 20rem;
+}
+
+body [name="bar-chat"] {
+  background-color: var(--color-secundario);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: solid 1px var(--color-secundario);
+  border-radius: 20rem;
+  padding: .6rem;
+  margin-bottom: 1rem;
+  width: 40rem;
+}
+
+body [name="pregunta"] {
+  background-color: var(--color-secundario);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: solid 1px var(--color-secundario);
+  border-radius: 20rem;
+  padding-left: .6rem;
+  padding-right: .6rem;
+  font-size: 0.6rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+
+body [id="preguntas"] {
+  position: absolute;
+  top: 50dvh;
+  z-index: -4;
+}
+
+body .preguntas-aparecer-animation {
+  -webkit-animation: desplazar-preguntas-arriba .3s ease-in-out;
+          animation: desplazar-preguntas-arriba .3s ease-in-out;
+  top: -17dvh;
+}
+
+body .preguntas-desaparecer-animation {
+  -webkit-animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+          animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+  top: 50dvh;
+}
+
+body .button-abrir-animation {
+  -webkit-animation: girar .2s ease-in-out;
+          animation: girar .2s ease-in-out;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+body .button-cerrar-animation {
+  -webkit-animation: regresar .2s ease-in-out;
+          animation: regresar .2s ease-in-out;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+body .boton-principal {
+  width: 4rem;
+  height: 4rem;
+  z-index: 3;
+}
+
+body [name="opciones"] {
+  z-index: 1;
+  width: 3rem;
+  height: 3rem;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+body .primer-boton-aparecer {
+  -webkit-animation: aparecer-primer-boton .3s ease-in-out;
+          animation: aparecer-primer-boton .3s ease-in-out;
+  -webkit-transform: translate(68px, 68px);
+          transform: translate(68px, 68px);
+}
+
+body .primer-boton-desaparecer {
+  -webkit-animation: desaparecer-primer-boton .3s ease-in-out;
+          animation: desaparecer-primer-boton .3s ease-in-out;
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+body .segundo-boton-aparecer {
+  -webkit-animation: aparecer-segundo-boton .3s ease-in-out;
+          animation: aparecer-segundo-boton .3s ease-in-out;
+  -webkit-transform: translate(80px, 0px);
+          transform: translate(80px, 0px);
+}
+
+body .segundo-boton-desaparecer {
+  -webkit-animation: desaparecer-segundo-boton .3s ease-in-out;
+          animation: desaparecer-segundo-boton .3s ease-in-out;
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+@media (max-width: 576px) {
+  [name="bar-chat"] {
+    background-color: var(--color-secundario);
+    -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: solid 1px var(--color-secundario);
+    border-radius: 20rem;
+    padding: .6rem;
+    margin-bottom: 1rem;
+    width: 80% !important;
+  }
+  body .preguntas-aparecer-animation {
+    -webkit-animation: desplazar-preguntas-arriba .3s ease-in-out;
+            animation: desplazar-preguntas-arriba .3s ease-in-out;
+    top: -12dvh;
+  }
+  body .preguntas-desaparecer-animation {
+    -webkit-animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+            animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+    top: 60dvh;
+  }
+}
+
+@media (max-width: 323px) {
+  body .preguntas-aparecer-animation {
+    -webkit-animation: desplazar-preguntas-arriba 0.4s ease-in-out;
+            animation: desplazar-preguntas-arriba 0.4s ease-in-out;
+    top: -17dvh;
+  }
+  body .preguntas-desaparecer-animation {
+    -webkit-animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+            animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+    top: 55dvh;
+  }
+}
+
+@media (min-width: 415px) and (max-width: 1366px) {
+  @-webkit-keyframes desplazar-preguntas-arriba {
+    from {
+      -webkit-transform: translate(0, 50dvh);
+              transform: translate(0, 50dvh);
+    }
+    to {
+      -webkit-transform: translate(0px, 0dvh);
+              transform: translate(0px, 0dvh);
+    }
+  }
+  @keyframes desplazar-preguntas-arriba {
+    from {
+      -webkit-transform: translate(0, 50dvh);
+              transform: translate(0, 50dvh);
+    }
+    to {
+      -webkit-transform: translate(0px, 0dvh);
+              transform: translate(0px, 0dvh);
+    }
+  }
+  @-webkit-keyframes desplazar-preguntas-abajo {
+    from {
+      -webkit-transform: translate(0, -60dvh);
+              transform: translate(0, -60dvh);
+    }
+    to {
+      -webkit-transform: translate(0, 0dvh);
+              transform: translate(0, 0dvh);
+    }
+  }
+  @keyframes desplazar-preguntas-abajo {
+    from {
+      -webkit-transform: translate(0, -60dvh);
+              transform: translate(0, -60dvh);
+    }
+    to {
+      -webkit-transform: translate(0, 0dvh);
+              transform: translate(0, 0dvh);
+    }
+  }
+  body .preguntas-aparecer-animation {
+    -webkit-animation: desplazar-preguntas-arriba 0.4s ease-in-out;
+            animation: desplazar-preguntas-arriba 0.4s ease-in-out;
+    top: -10dvh;
+  }
+  body .preguntas-desaparecer-animation {
+    -webkit-animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+            animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+    top: 50dvh;
+  }
+}
+
+@media (min-width: 1367px) {
+  @-webkit-keyframes desplazar-preguntas-arriba {
+    from {
+      -webkit-transform: translate(0, 50dvh);
+              transform: translate(0, 50dvh);
+    }
+    to {
+      -webkit-transform: translate(0px, 0dvh);
+              transform: translate(0px, 0dvh);
+    }
+  }
+  @keyframes desplazar-preguntas-arriba {
+    from {
+      -webkit-transform: translate(0, 50dvh);
+              transform: translate(0, 50dvh);
+    }
+    to {
+      -webkit-transform: translate(0px, 0dvh);
+              transform: translate(0px, 0dvh);
+    }
+  }
+  @-webkit-keyframes desplazar-preguntas-abajo {
+    from {
+      -webkit-transform: translate(0, -56dvh);
+              transform: translate(0, -56dvh);
+    }
+    to {
+      -webkit-transform: translate(0, 0dvh);
+              transform: translate(0, 0dvh);
+    }
+  }
+  @keyframes desplazar-preguntas-abajo {
+    from {
+      -webkit-transform: translate(0, -56dvh);
+              transform: translate(0, -56dvh);
+    }
+    to {
+      -webkit-transform: translate(0, 0dvh);
+              transform: translate(0, 0dvh);
+    }
+  }
+  .margin-msg {
+    margin-bottom: 3rem;
+  }
+  body .preguntas-aparecer-animation {
+    -webkit-animation: desplazar-preguntas-arriba 0.4s ease-in-out;
+            animation: desplazar-preguntas-arriba 0.4s ease-in-out;
+    top: -6dvh;
+  }
+  body .preguntas-desaparecer-animation {
+    -webkit-animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+            animation: desplazar-preguntas-abajo 0.6s ease-in-out;
+    top: 50dvh;
+  }
+}
+/*# sourceMappingURL=styles.css.map */

@@ -1,14 +1,10 @@
-let canvasL;
-let ctxL;
-let textElement;
-
 let angle = 0;
 let hue = 0;
 
 let dark_color_primario = "#2a2a2a";
 let dark_color_secundario = "#2c2c2c";
 let dark_text = "white";
-let code_loading='<div class="loading"><canvas id="loader" width="50" height="50"></canvas><h2 id="loadingText"></h2></div>';
+let code_loading='<div class="align-self-start"><div class="d-flex justify-content-start"><div class="d-flex flex-column align-items-start"><div class="d-flex justify-content-start gap-4"><span></span><span><b>Bot</b></span></div><div class="d-flex justify-content-start gap-2"><i class="bi bi-person-circle text-light"></i><div class="loading"><canvas id="loader" width="50" height="50"></canvas></div></div></div></div></div>';
 
 
 let light_color_primario = "#cececeff";
@@ -52,14 +48,6 @@ let cargarVariables = () =>{
     trigger_preguntas[1].addEventListener("click",addConversacionQueSabes);
     trigger_preguntas[2].addEventListener("click",addExperiencia);
     trigger_preguntas[3].addEventListener("click",addConversacionContacto);
-    cargarFuncionesLoading();
-}
-
-let cargarFuncionesLoading = ()=>{
-    canvasL = document.getElementById("loader");
-    ctxL = canvasL.getContext("2d");
-    textElement = document.getElementById("loadingText");
-
 }
 
 var addConversacionQuienEres = () =>{
@@ -68,19 +56,16 @@ var addConversacionQuienEres = () =>{
 
     let respuestaU = '<div class="d-flex justify-content-end"><div class="d-flex flex-column align-items-end"><div class="d-flex justify-content-end gap-4"><span><b>Usuario</b></span><span></span></div><div class="d-flex justify-content-end gap-2"><span class="badge text-bg-primary text-light texto-chat text-end" name="mensaje" style="width: fit-content;">¿Quién eres?</span><i class="bi bi-person-circle text-light"></i></div></div></div>';
     let respuestaB = '<div class="align-self-start margin-msg" id="msg_bot"><div class="d-flex justify-content-start"><div class="d-flex flex-column align-items-start"><div class="d-flex justify-content-start gap-4"><span></span><span><b>Bot</b></span></div><div class="d-flex justify-content-start gap-2"><i class="bi bi-person-circle text-light"></i><span class="badge text-bg-success text-light texto-chat" style="width: fit-content;" name="mensaje"><div class="card mb-3" style="max-width: 400px;"><div class="card-header"><b>Juan Sebastián Osorio</b></div><div class="row g-0"><div class="col-md-4"><img src="./web/srcs/sebasCV.jpg" class="img-fluid rounded-start p-2" alt="Imagen de prueba"></div><div class="col-md-8"><div class="card-body d-flex flex-column align-items-center"><p class="card-text text-center">Desarrollador <strong>full-stack</strong>, enfocado en ser <strong>SecDevOps</strong>, aplicando seguridad en las aplicaciones web, además de haber sido candidato en el <strong>campus de Madrid 42</strong>.</p></div></div></div><div class="card-footer"><div class="d-flex gap-2"><a class="btn btn-outline-success" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=personaldesebas@gmail.com"><i class="bi bi-envelope"></i></a><a href="./web/srcs/SebastíanOsorio.pdf" target="_blank" class="btn btn-outline-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a><a href="https://www.linkedin.com/in/sebastián-osorio-518728266/" target="_blank" class="btn btn-outline-primary"><i class="bi bi-linkedin"></i></a><a href="https://github.com/SebasTechMad" target="_blank" class="btn btn-outline-dark"><i class="bi bi-github"></i></a></div></div></div></span></div></div></div></div>';
-    
+
+    let logChat = chat.innerHTML;
+
     chat.innerHTML += respuestaU;
     setTimeout(() => {
-        //chat.innerHTML += code_loading;
-    chat.innerHTML = respuestaU+respuestaB+"<br><br>";
+        chat.innerHTML = logChat+respuestaU+respuestaB+"<br><br>";
     }, 2000);
     
     chat.innerHTML += code_loading;
-    draw(canvasL, ctxL);
-    waveEffect();
-
-    // chat.innerHTML += respuestaB;
-    // chat.innerHTML += "<br><br>";
+    draw();
 }
 
 var addConversacionQueSabes = () =>{
@@ -89,9 +74,15 @@ var addConversacionQueSabes = () =>{
     let respuestaU = '<div class="d-flex justify-content-end"><div class="d-flex flex-column align-items-end"><div class="d-flex justify-content-end gap-4"><span><b>Usuario</b></span><span></span></div><div class="d-flex justify-content-end gap-2"><span class="badge text-bg-primary text-light texto-chat text-end" name="mensaje" style="width: fit-content;">¿Qué sabes hacer?</span><i class="bi bi-person-circle text-light"></i></div></div></div>';
     let respuestaB = '<div class="align-self-start margin-msg" id="msg_bot"><div class="d-flex justify-content-start"><div class="d-flex flex-column align-items-start"><div class="d-flex justify-content-start gap-4"><span></span><span><b>Bot</b></span></div><div class="d-flex justify-content-start gap-2"><i class="bi bi-person-circle text-light"></i><span class="badge text-bg-success text-light texto-chat" style="width: fit-content;" name="mensaje"><div class="card text-center" style="max-width: 400px;"><div class="card-header"><h5 class="mb-0">Tecnologías</h5></div><div class="card-body"><div class="d-flex flex-wrap justify-content-center gap-2"><button class="btn btn-outline-primary" onclick="Frontend()">Frontend</button><button class="btn btn-outline-danger" onclick="Backend()">Backend</button><button class="btn btn-outline-success" onclick="Devops()">CI/CD</button><div class="col-12 d-flex flex-wrap gap-3" name="imagenes"></div></div></div></div></span></div></div></div></div>';
     
+    let logChat = chat.innerHTML;
+
     chat.innerHTML += respuestaU;
-    chat.innerHTML += respuestaB;
-    chat.innerHTML += "<br><br>";
+    setTimeout(() => {
+        chat.innerHTML = logChat+respuestaU+respuestaB+"<br><br>";
+    }, 2000);
+    
+    chat.innerHTML += code_loading;
+    draw();
 }
 
 var addConversacionContacto = () =>{
@@ -100,9 +91,15 @@ var addConversacionContacto = () =>{
     let respuestaU = '<div class="d-flex justify-content-end"><div class="d-flex flex-column align-items-end"><div class="d-flex justify-content-end gap-4"><span><b>Usuario</b></span><span></span></div><div class="d-flex justify-content-end gap-2"><span class="badge text-bg-primary text-light texto-chat text-end" name="mensaje" style="width: fit-content;">¿Cómo contactar contigo?</span><i class="bi bi-person-circle text-light"></i></div></div></div>';
     let respuestaB = '<div class="align-self-start margin-msg" id="msg_bot"><div class="d-flex justify-content-start"><div class="d-flex flex-column align-items-start"><div class="d-flex justify-content-start gap-4"><span></span><span><b>Bot</b></span></div><div class="d-flex justify-content-start gap-2"><i class="bi bi-person-circle text-light"></i><span class="badge text-bg-success text-light texto-chat" style="width: fit-content;" name="mensaje"><div class="card text-center" style="max-width: 400px;"><div class="card-header"><h5 class="mb-0">Contacto</h5></div><div class="card-body"><div class="d-flex gap-2 align-items-center"><p class="card-text"><strong>personaldesebas@gmail.com</strong></p><a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=personaldesebas@gmail.com" class="btn btn-outline-danger"><i class="bi bi-envelope"></i></a></div><br><div class="d-flex gap-2 align-items-center"><p class="card-text"><strong>+645 54 11 71</strong></p><div class="flex-grow-1 d-flex justify-content-end"><a target="_blank" href="https://www.google.es/maps/place/Barajas,+28042+Madrid/@40.4794946,-3.6176467,13z/data=!3m1!4b1!4m6!3m5!1s0xd4231e0cc808cfb:0x498db67d1ab6dcea!8m2!3d40.4653704!4d-3.5951518!16s%2Fm%2F04_0t51?hl=es&entry=ttu&g_ep=EgoyMDI1MDIwNS4xIKXMDSoASAFQAw%3D%3D" class="btn btn-outline-primary"><i class="bi bi-geo-fill"></i></a></div></div></div></div></div></span></div></div></div></div>';
     
+    let logChat = chat.innerHTML;
+
     chat.innerHTML += respuestaU;
-    chat.innerHTML += respuestaB;
-    chat.innerHTML += "<br><br>";
+    setTimeout(() => {
+        chat.innerHTML = logChat+respuestaU+respuestaB+"<br><br>";
+    }, 2000);
+    
+    chat.innerHTML += code_loading;
+    draw();
 }
 
 var addExperiencia = () =>{
@@ -113,9 +110,15 @@ var addExperiencia = () =>{
     let respuestaU = '<div class="d-flex justify-content-end"><div class="d-flex flex-column align-items-end"><div class="d-flex justify-content-end gap-4"><span><b>Usuario</b></span><span></span></div><div class="d-flex justify-content-end gap-2"><span class="badge text-bg-primary text-light texto-chat text-end" name="mensaje" style="width: fit-content;">¿Tienes experiencia?</span><i class="bi bi-person-circle text-light"></i></div></div></div>';
     let respuestaB = '<div class="align-self-start margin-msg" id="msg_bot"><div class="d-flex justify-content-start"><div class="d-flex flex-column align-items-start"><div class="d-flex justify-content-start gap-4"><span></span><span><b>Bot</b></span></div><div class="d-flex justify-content-start gap-2"><i class="bi bi-person-circle text-light"></i><span class="badge text-bg-success text-light texto-chat" style="width: fit-content;" name="mensaje"><div id="carouselExample" class="carousel slide" data-bs-ride="pause" style="max-width: 500px;"><div class="carousel-inner"><div class="carousel-item active"><div class="d-flex flex-column"><div style="background-color: white;"><img src="./web/srcs/datasystem.png" class="d-block w-100" style="object-fit: cover;" alt="Imagen 1"></div><div class="p-3" style="margin-top: 2rem;"><h5>Data system</h5><p>Informático encargado en resolución en dispositivos tanto en hardware como en software</p></div></div></div><div class="carousel-item"><div class="d-flex flex-column"><img src="./web/srcs/grupo-tic.jpg" class="d-block w-100" style="object-fit: cover;" alt="Imagen 2"><div class="p-3" style="margin-top: 2rem;"><h5>Grupo TIC revolution</h5><p>Desarrollador web encargado de desarrollo tanto en Frontend como en Backend. Encargado de desarrollo de base de datos, y/o mantenimiento de código</p></div></div></div></div><button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button><button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button></div></span></div></div></div></div>';
     
+    let logChat = chat.innerHTML;
+
     chat.innerHTML += respuestaU;
-    chat.innerHTML += respuestaB;
-    chat.innerHTML += "<br><br>";
+    setTimeout(() => {
+        chat.innerHTML = logChat+respuestaU+respuestaB+"<br><br>";
+    }, 2000);
+    
+    chat.innerHTML += code_loading;
+    draw();
 }
 
 
@@ -243,7 +246,10 @@ let cambioColoresIconos = (color) =>{
     }
 }
 
-    function draw(canvas, ctx) {
+    function draw() {
+        canvas = document.getElementById("loader");
+        ctx = canvas.getContext("2d");
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         const x = canvas.width / 2;
@@ -267,7 +273,7 @@ let cambioColoresIconos = (color) =>{
         ctx.stroke();
 
         // Actualiza ángulo y color
-        angle += 0.1;
+        angle += 0.05;
         hue = (hue + 2) % 360;
 
         requestAnimationFrame(draw);
@@ -284,18 +290,33 @@ let cambioColoresIconos = (color) =>{
     // span.textContent = letter;
     // textElement.appendChild(span);
     // });
-    let index = 0;
+
+        
 
     function waveEffect() {
-        const spans = textElement.querySelectorAll("span");
+        // textElement = document.getElementById("loadingText");
+        // const word = "Cargando";
+        // const letters = word.split("");
         
-        // resetear colores
-        spans.forEach(span => (span.classList.remove("gray")));
-        // aplicar gris a la letra actual
-        spans[index].classList.add("gray");
+        // // Crear los spans por letra
+        // letters.forEach(letter => {
+        // const span = document.createElement("span");
+        // span.textContent = letter;
+        // textElement.appendChild(span);
+        // });
 
-        // avanzar al siguiente índice
-        index = (index + 1) % spans.length;
+        // const spans = textElement.querySelectorAll("span");
+        // let index = 0;
+        // // resetear colores
+
+        // setInterval(() => {
+        //     spans.forEach(span => (span.classList.remove("gray")));
+        //     // aplicar gris a la letra actual
+        //     spans[index].classList.add("gray");
+        //     // avanzar al siguiente índice
+        //     index = (index + 1) % spans.length;    
+        // }, 150);
+        
     }
 
     // setInterval(waveEffect, 150); // cada 100ms cambia la letra
